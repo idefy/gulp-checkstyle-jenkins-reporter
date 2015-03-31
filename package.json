@@ -1,0 +1,23 @@
+{
+  "name": "gulp-jshint-jenkins-reporter",
+  "version": "1.0.0",
+  "description": "Advanced reporter for gulp-jshint to be used by Jenkins (Hudson). Writes output to an xml file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/idefy/gulp-jshint-jenkins-reporter.git"
+  },
+  "keywords": [
+    "npm",
+    "gulp",
+    "jshint",
+    "jenkins",
+    "reporter",
+    "checkstyle"
+  ],
+  "author": "Igor DeFaye",
+  "license": "MIT"
+}
