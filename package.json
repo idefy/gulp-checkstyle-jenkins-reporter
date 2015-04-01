@@ -1,6 +1,6 @@
 {
   "name": "gulp-jshint-jenkins-reporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced reporter for gulp-jshint to be used by Jenkins (Hudson). Writes output to an xml file.",
   "main": "index.js",
   "scripts": {
