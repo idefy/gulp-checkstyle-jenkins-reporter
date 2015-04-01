@@ -32,7 +32,7 @@ module.exports = function (results, data, opts) {
     opts.filename = opts.filename || defaultFilename;
 	opts.level = opts.level || defaultLevel;
 	opts.sourceDir = opts.sourceDir || defaultSourceDir;
-	opts.base = opts.base || defaultbase;
+	opts.base = opts.base || defaultBase;
 	
 	var lvlVisibility = {
 		error: opts.level.indexOf('e') >= 0,
