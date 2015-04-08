@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var mkdirp = require('mkdirp');
 
 var defaultFilename = 'checkstyle-result.xml';
 var defaultLevel = 'ewi';
@@ -54,13 +55,14 @@ module.exports = function (results, data, opts) {
       wrStream.end();
       wrStream = null;
     }
-
+	
 	// verifies if output file is still empty
-	if(fEmpty) {
+	if(wrStream && fEmpty) {
 		fEmpty = fs.statSync(opts.filename).size === 0;
 	}
 	
     if (!wrStream) {
+	  mkdirp.sync(path.dirname(opts.filename))
       wrStream = fs.createWriteStream(opts.filename);
       filename = opts.filename;
     }
