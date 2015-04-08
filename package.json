@@ -1,6 +1,6 @@
 {
   "name": "gulp-jshint-jenkins-reporter",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Advanced reporter for gulp-jshint to be used by Jenkins (Hudson). Writes output to an xml file.",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,6 @@
   "author": "Igor DeFaye",
   "license": "MIT",
   "dependencies": {
-	"mkdirp": "^0.5.0"
+    "mkdirp": "^0.5.0"
   }
 }
