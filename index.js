@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
+var replace = require('replace');
 
 var defaultFilename = 'checkstyle-result.xml';
 var defaultLevel = 'ewi';
@@ -10,6 +11,7 @@ var defaultBase = '';
 var wrStream;
 var filename;
 var fEmpty = true;
+//var fLength = 0;
 
 module.exports = function (results, data, opts) {
 	"use strict";
@@ -63,10 +65,20 @@ module.exports = function (results, data, opts) {
 	
     if (!wrStream) {
 	  mkdirp.sync(path.dirname(opts.filename))
+	  //fLength = fs.statSync(opts.filename).size
       wrStream = fs.createWriteStream(opts.filename);
       filename = opts.filename;
     }
+	// removes last checkstyle tag in case there was one
+	replace({
+		regex: '</checkstyle>',
+		replacement: '            \n',
+		paths: [opts.filename],
+		recursive: false,
+		silent: true
+	});
 	
+	//fLength = fs.statSync(opts.filename).size;
 	
 	function getSeverity (code) {
 		return severityCodes[code.charAt(0).toLowerCase()] || '';
@@ -91,6 +103,10 @@ module.exports = function (results, data, opts) {
 	
 	function showLevel(sevCode) {
 		return lvlVisibility[sevCode];
+	}
+	
+	function source(code) {
+		return isNaN(parseInt(code.charAt(1))) ? 'jscs.' + code : 'jshint.' + code;
 	}
 
     results.forEach(function (result) {
@@ -117,16 +133,17 @@ module.exports = function (results, data, opts) {
 				column: result.error.character,
 				severity: sevCode,
 				message: encode(result.error.reason),
-				source: 'jshint.' + result.error.code
+				source: source(result.error.code) 
 			});
 		}
 	});
 	
 	if(fEmpty) {
-		out.push("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+		out.push('<?xml version="1.0" encoding="utf-8"?>');
+		out.push('<checkstyle version="4.3">');
 		fEmpty = false;
 	}
-	out.push("<checkstyle version=\"4.3\">");
+	
 
 	Object.keys(files).forEach(function(file) {
 		out.push('\t<file name="' + opts.sourceDir + file + '">');
@@ -145,7 +162,7 @@ module.exports = function (results, data, opts) {
 		out.push('\t</file>');
 	});
 
-	out.push("</checkstyle>");
+	out.push('</checkstyle>');
 
     wrStream.write(out.join('\n'));
 };
