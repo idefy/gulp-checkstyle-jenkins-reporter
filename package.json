@@ -1,6 +1,6 @@
 {
   "name": "gulp-checkstyle-jenkins-reporter",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Advanced reporter for gulp-jshint and gulp-jscs to be used by Jenkins (Hudson). Writes output to an xml file.",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "npm",
     "gulp",
     "jshint",
-	"jscs",
+    "jscs",
     "jenkins",
     "reporter",
     "checkstyle"
