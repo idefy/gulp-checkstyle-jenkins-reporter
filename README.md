@@ -3,7 +3,7 @@
 
 <table>
 <tr>
-<td>Package</td><td>gulp-jshint-jenkins-reporter</td>
+<td>Package</td><td>gulp-checkstyle-jenkins-reporter</td>
 </tr>
 <tr>
 <td>Description</td>
@@ -17,7 +17,7 @@
 
 ## Install
 
-    npm install gulp-jshint-jenkins-reporter --save-dev
+    npm install gulp-checkstyle-jenkins-reporter --save-dev
 
 ## Usage
 
@@ -28,7 +28,7 @@ var jshint = require('gulp-jshint');
 gulp.task('lint', function() {
   return gulp.src('./lib/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('gulp-jshint-jenkins-reporter'));
+    .pipe(jshint.reporter('gulp-checkstyle-jenkins-reporter'));
 });
 ```
 This will output the report to checkstyle-result.xml
@@ -43,7 +43,7 @@ var jshint = require('gulp-jshint');
 gulp.task('lint', function() {
   return gulp.src('./lib/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('gulp-jshint-jenkins-reporter', {
+    .pipe(jshint.reporter('gulp-checkstyle-jenkins-reporter', {
       filename: __reports + '/jshint-checkstyle.xml',
 	  level: 'e', 
 	  base:'src/', 
@@ -101,7 +101,7 @@ gulp.task('lint', function() {
     .pipe($.jscs())
     .on('error', function(){})
 	.pipe($.jscsStylish.combineWithHintResults())
-    .pipe(jshint.reporter('gulp-jshint-jenkins-reporter'));
+    .pipe(jshint.reporter('gulp-checkstyle-jenkins-reporter'));
 });
 ```
 You will notice that errors from jscs and jshint are marked differently in the checkfile, so you know which error came from where.
