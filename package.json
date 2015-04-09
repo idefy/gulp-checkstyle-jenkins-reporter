@@ -19,22 +19,16 @@
     "reporter",
     "checkstyle"
   ],
-  "author": {
-    "name": "Igor DeFaye"
-  },
+  "author": "Igor DeFaye",
   "license": "MIT",
   "dependencies": {
     "mkdirp": "^0.5.0",
     "replace": "^0.3.0"
   },
-  "readme": "\n## Information\n\n<table>\n<tr>\n<td>Package</td><td>gulp-checkstyle-jenkins-reporter</td>\n</tr>\n<tr>\n<td>Description</td>\n<td>Advanced reporter for gulp-jshint and gulp-jscs to be used by Jenkins (Hudson). Writes output to an xml file.</td>\n</tr>\n<tr>\n<td>Node Version</td>\n<td>>= 0.3</td>\n</tr>\n</table>\n\n## Install\n\n    npm install gulp-checkstyle-jenkins-reporter --save-dev\n\n## Usage\n\n```javascript\nvar gulp = require('gulp');\nvar jshint = require('gulp-jshint');\n\ngulp.task('lint', function() {\n  return gulp.src('./lib/*.js')\n    .pipe(jshint())\n    .pipe(jshint.reporter('gulp-checkstyle-jenkins-reporter'));\n});\n```\nThis will output the report to checkstyle-result.xml\n\n\n## Advances usage\n\n```javascript\nvar gulp = require('gulp');\nvar jshint = require('gulp-jshint');\n\ngulp.task('lint', function() {\n  return gulp.src('./lib/*.js')\n    .pipe(jshint())\n    .pipe(jshint.reporter('gulp-checkstyle-jenkins-reporter', {\n      filename: __reports + '/jshint-checkstyle.xml',\n\t  level: 'e', \n\t  base:'src/', \n\t  sourceDir:'path/to/repo/'\n    }));\n});\n```\n\n## Options\n\nPlugin options:\n\nType: `filename`\nDefault: `\"checkstyle-result.xml\"`\n\nThe filename to write output from jshint. When linting is successfull, the file is not created.\n\n\nType: `level`\nDefault: `\"ewi\"`\n\nThe level of severity you want the report to catch. e: error, w: warning,  i: info. can be\nany combination of the three letters.\n\n\nType: `base`\nDefault: `\"\"`\n\nIf given, the path of the files will be rebased according to the value. For instance:\nif your file path is `C:/git/src/myApp/js/somejsfile.js` and you set base with `src/` then the xml will \ncontain the following path : `myApp/js/somejsfile.js`\nFor Windows backslash are used.\n\n\nType: `sourceDir`\nDefault: `\"\"`\n\nIf given, the path of the files will be prefixed with the sourceDir. For instance:\nif your file path is `C:/git/src/myApp/js/somejsfile.js` and you set base with `src/` and set sourceDir with `someplace/else/`\nthen the xml will contain the following path : `someplace/else/myApp/js/somejsfile.js`\nFor Windows backslash are used.\n\n## LICENSE\n\nThe MIT License (MIT)\n\nCopyright (c) 2014 Igor DeFaye\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n",
-  "readmeFilename": "README.md",
-  "gitHead": "f93b8b179a7e3f7a6c01ba47911f14c294b978f7",
   "bugs": {
     "url": "https://github.com/idefy/gulp-checkstyle-jenkins-reporter/issues"
   },
   "homepage": "https://github.com/idefy/gulp-checkstyle-jenkins-reporter",
-  "_id": "gulp-checkstyle-jenkins-reporter@1.1.0",
   "_shasum": "564fa48cb83aea6902f4e79fa3ee2e1525929efa",
   "_from": "gulp-checkstyle-jenkins-reporter@1.1.0"
 }
