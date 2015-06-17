@@ -94,7 +94,7 @@ module.exports = function (results, data, opts) {
 	}
 	
     function makeAttribute(attr, valueObject) {
-		if (!valueObject[attr]) {
+		if (!valueObject.hasOwnProperty(attr)) {
 			throw Error('No property '+attr+' in error object');
 		}
 
